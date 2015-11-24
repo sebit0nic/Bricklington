@@ -4,12 +4,14 @@ using System.Collections;
 public class Objectcatcher : MonoBehaviour {
 
 	public GameObject gameoverScreen;
+	public Animator scoreAnimator;
 	public Blockspawner blockSpawner;
 
 	private void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag.Equals ("Ball")) {
 			gameoverScreen.SetActive(true);
 			blockSpawner.SetPlaying(false);
+			scoreAnimator.SetTrigger("OnDisappear");
 
 			GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
 			for (int i = 0; i < blocks.Length; i++) {
