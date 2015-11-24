@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 85ea71114d1181f46846d60dd235f38d
+timeCreated: 1447707964
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ball
+    21300002: Paddle
+    21300004: Currency Icon
+    21300006: Wall
+    21300008: Block
+    21300010: Explosion
+    21300012: Button
+    21300014: Play Icon
+    21300016: Retry Icon
+    21300018: Home Icon
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ball
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 306
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Paddle
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 464
+        width: 200
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Currency Icon
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 409
+        width: 79
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wall
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 433
+        width: 41
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Block
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 413
+        width: 101
+        height: 41
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Explosion
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 102
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Button
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 248
+        width: 151
+        height: 152
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Play Icon
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 249
+        width: 101
+        height: 151
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Retry Icon
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 74
+        width: 141
+        height: 163
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home Icon
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 74
+        width: 135
+        height: 163
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: Spritesheet 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
