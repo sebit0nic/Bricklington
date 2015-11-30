@@ -23,6 +23,7 @@ public class Score : MonoBehaviour {
 	public void Reset() {
 		currentScore = 0;
 		scoreText.text = "0";
+		endScore.text = "0";
 		animator.SetTrigger ("OnScore");
 	}
 }

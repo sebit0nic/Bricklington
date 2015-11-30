@@ -19,8 +19,6 @@ public class Ball : MonoBehaviour {
 
 	private void Start() {
 		score = GameObject.Find ("Main Camera").GetComponent<Score> ();
-		score.Reset ();
-		
 		animator = GetComponent<Animator> ();
 	}
 

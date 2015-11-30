@@ -1,31 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour {
 
-	public GameObject titlescreen;
+	public Screen titlescreen;
 	public GameObject ball;
 	public GameObject explosion;
 	private Blockspawner blockspawner;
-	private Animator thisAnimator;
-	public Animator scoreAnimator, titleAnimator, highscoreAnimator;
+	private Button thisButton;
 
 	private void Start() {
 		blockspawner = GameObject.Find ("Blockspawner").GetComponent<Blockspawner>();
-		thisAnimator = GetComponent<Animator> ();
+		thisButton = GetComponent<Button> ();
 	}
 	
 	public void OnClick() {
-		thisAnimator.SetTrigger ("OnDisappear");
-		titleAnimator.SetTrigger ("OnDisappear");
-		highscoreAnimator.SetTrigger ("OnDisappear");
-		scoreAnimator.SetTrigger ("OnTransition");
+		titlescreen.OnDisappear ();
+		thisButton.enabled = false;
 		
 		blockspawner.SetPlaying (true);
-		ball.SetActive (true);
+		Instantiate (ball, new Vector3(0, 1, 0), Quaternion.identity);
 	}
 
 	public void OnDisableTitlescreen() {
-		titlescreen.SetActive (false);
+		thisButton.enabled = true;
 	}
 }
