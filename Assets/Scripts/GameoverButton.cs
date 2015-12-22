@@ -22,13 +22,14 @@ public class GameoverButton : MonoBehaviour {
 		
 		blockspawner.SetPlaying (true);
 		Instantiate (ball, Vector3.zero, Quaternion.identity);
-		score.Reset ();
+		score.ResetForGame ();
 	}
 
 	public void OnHome() {
 		gameoverScreen.OnDisappear ();
 		thisButton.enabled = false;
 		titleScreen.OnStart ();
+		score.ResetForHome ();
 	}
 
 	public void OnDisableGameoverScreen() {

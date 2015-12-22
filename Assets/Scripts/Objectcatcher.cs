@@ -6,6 +6,11 @@ public class Objectcatcher : MonoBehaviour {
 	public Screen gameoverScreen;
 	public Animator scoreAnimator;
 	public Blockspawner blockSpawner;
+	private Score score;
+
+	private void Start() {
+		score = GameObject.Find ("Main Camera").GetComponent<Score> ();
+	}
 
 	private void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag.Equals ("Ball")) {
@@ -14,6 +19,7 @@ public class Objectcatcher : MonoBehaviour {
 			gameoverScreen.OnStart();
 			blockSpawner.SetPlaying(false);
 			scoreAnimator.SetTrigger("OnDisappear");
+			score.SetScoreText();
 
 			GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
 			for (int i = 0; i < blocks.Length; i++) {
