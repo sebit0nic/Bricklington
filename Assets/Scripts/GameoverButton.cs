@@ -22,7 +22,7 @@ public class GameoverButton : MonoBehaviour {
 		
 		blockspawner.SetPlaying (true);
 		Instantiate (ball, Vector3.zero, Quaternion.identity);
-		score.ResetForGame ();
+		score.ResetForGame (true);
 	}
 
 	public void OnHome() {

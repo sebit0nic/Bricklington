@@ -31,10 +31,12 @@ public class Score : MonoBehaviour {
 		endHighscore.text = "Top: "+highscore.ToString ();
 	}
 
-	public void ResetForGame() {
+	public void ResetForGame(bool onscore) {
 		currentScore = 0;
 		scoreText.text = "0";
-		animator.SetTrigger ("OnScore");
+		if (onscore) {
+			animator.SetTrigger ("OnScore");
+		}
 	}
 
 	public void ResetForHome() {

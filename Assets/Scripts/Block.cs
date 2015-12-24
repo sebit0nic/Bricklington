@@ -7,6 +7,7 @@ public class Block : MonoBehaviour {
 	public SpriteRenderer blockShadow;
 
 	private Animator animator;
+	private ParticleSystem particleSys;
 	private Collider2D thisCollider;
 	private SpriteRenderer block;
 	private Vector3 blockPos;
@@ -14,6 +15,7 @@ public class Block : MonoBehaviour {
 
 	private void Start() {
 		animator = GetComponent<Animator> ();
+		particleSys = GetComponent<ParticleSystem> ();
 		block = GetComponent<SpriteRenderer> ();
 		thisCollider = GetComponent<BoxCollider2D> ();
 		tempColor = new Color (0.472f, 0.25f, 0, 1);
@@ -39,6 +41,7 @@ public class Block : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag.Equals ("Ball")) {
+			particleSys.Play();
 			OnDissolve();
 		}
 	}

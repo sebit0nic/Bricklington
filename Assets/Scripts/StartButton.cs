@@ -20,7 +20,7 @@ public class StartButton : MonoBehaviour {
 	public void OnClick() {
 		titlescreen.OnDisappear ();
 		thisButton.enabled = false;
-		score.ResetForGame ();
+		score.ResetForGame (false);
 		
 		blockspawner.SetPlaying (true);
 		Instantiate (ball, new Vector3(0, 1, 0), Quaternion.identity);
