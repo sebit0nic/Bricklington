@@ -4,7 +4,7 @@ using System.Collections;
 public class Objectcatcher : MonoBehaviour {
 
 	public Screen gameoverScreen;
-	public Animator scoreAnimator;
+	public Animator scoreAnimator, crownAnimator;
 	public Blockspawner blockSpawner;
 	private Score score;
 
@@ -19,6 +19,9 @@ public class Objectcatcher : MonoBehaviour {
 			gameoverScreen.OnStart();
 			blockSpawner.SetPlaying(false);
 			scoreAnimator.SetTrigger("OnDisappear");
+			if (score.IsNewHighscore()) {
+				crownAnimator.SetTrigger("OnDisappear");
+			}
 			score.SetScoreText();
 
 			GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
