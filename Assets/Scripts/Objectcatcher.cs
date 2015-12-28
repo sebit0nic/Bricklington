@@ -30,7 +30,7 @@ public class Objectcatcher : MonoBehaviour {
 				block.OnDissolve();
 			}
 		}
-		if (coll.gameObject.tag.Equals("Block")) {
+		if (coll.gameObject.tag.Equals("BlockFormation")) {
 			Destroy (coll.gameObject);
 		}
 	}

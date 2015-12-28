@@ -23,10 +23,6 @@ public class Block : MonoBehaviour {
 	}
 
 	private void Update() {
-		float yPos = transform.position.y - fallingSpeed * Time.deltaTime;
-		blockPos = new Vector3 (transform.position.x, yPos, 0);
-		transform.position = blockPos;
-
 		if (transform.position.y <= -4) {
 			tempColor.a -= 2 * Time.deltaTime;
 			tempColor2.a -= 2 * Time.deltaTime;
