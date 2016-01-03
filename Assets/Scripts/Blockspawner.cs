@@ -6,13 +6,12 @@ public class Blockspawner : MonoBehaviour {
 	public GameObject block;
 	public float startInterval = 5;
 	private float timer = 2;
-	private int blockCount;
+	private int lineCount;
 	private bool playing;
 
-	private float[] spawnlocations1 = {-2.7f, -1.6f, -0.5f, 0.6f, 1.7f, 2.8f};
-	private float[] spawnlocations2 = {-2.2f, -1.1f, 0f, 1.1f, 2.2f};
-	private bool line1 = false;
-	private int possibleBlocksPerLine = 1, minBlocksPerLine = 1;
+	public Vector2[] spawnLocations;
+	private int maxAllowedBlocks = 1;
+	private int[] placedBlocks = new int[30];
 
 	private void Update() {
 		if (playing) {
@@ -20,70 +19,50 @@ public class Blockspawner : MonoBehaviour {
 			
 			if (timer >= startInterval) {
 				SpawnBlocks();
-				
-				line1 = !line1;
 				timer = 0;
-				if (blockCount > 10) {
-					possibleBlocksPerLine = 2;
-				}
-				if (blockCount > 30) {
-					possibleBlocksPerLine = 3;
-				}
-				if (blockCount > 60) {
-					minBlocksPerLine = 2;
-					possibleBlocksPerLine = 4;
-				}
-				if (blockCount > 100) {
-					minBlocksPerLine = 3;
+
+				if (lineCount <= 2) {
+					maxAllowedBlocks = 1;
+				} else if (lineCount > 2 && lineCount <= 4) {
+					maxAllowedBlocks = 3;
+				} else if (lineCount > 4 && lineCount <= 19) {
+					maxAllowedBlocks = 6;
+				} else if (lineCount > 19 && lineCount % 5 == 0 && maxAllowedBlocks < 30) {
+					maxAllowedBlocks += 2;
 				}
 			}
 		}
 	}
 
 	private void SpawnBlocks() {
-		int currentBlocksPerLine = Random.Range (minBlocksPerLine, possibleBlocksPerLine+1);
-		float[] placedBlocks = new float[20];
-		int pointer = 0;
+		int amountOfBlocks = Random.Range (1, maxAllowedBlocks);
+		placedBlocks = new int[30];
 
-		while (currentBlocksPerLine > 0) {
+		while (amountOfBlocks > 0) {
 			bool canBePlaced = true;
-			int random;
-			float spawnlocation;
-
-			if (line1) {
-				random = Random.Range (0, 6);
-				spawnlocation = spawnlocations1[random];
-			} else {
-				random = Random.Range (0, 5);
-				spawnlocation = spawnlocations2[random];
-			}
+			int randomLocation = Random.Range (0, 30);
 
 			for (int i = 0; i < placedBlocks.Length; i++) {
-				if (spawnlocation == placedBlocks[i]) {
+				if (placedBlocks[i] == randomLocation) {
 					canBePlaced = false;
+					break;
 				}
 			}
-			if (canBePlaced) {
-				placedBlocks[pointer] = spawnlocation;
-				pointer++;
-				Instantiate(block, new Vector3(spawnlocation, transform.position.y, 0), Quaternion.identity);
-				blockCount++;
-				currentBlocksPerLine--;
 
-				if (blockCount % 30 == 0 && startInterval > 1) {
-					startInterval -= 0.25f;
-				}
+			if (canBePlaced) {
+				Instantiate(block, spawnLocations[randomLocation], Quaternion.identity);
+				placedBlocks[placedBlocks.Length-1] = randomLocation;
+				amountOfBlocks--;
 			}
 		}
+		lineCount++;
 	}
 
 	public void SetPlaying(bool playing) {
 		startInterval = 5;
 		timer = 2;
-		possibleBlocksPerLine = 1;
-		minBlocksPerLine = 1;
-		line1 = false;
-		blockCount = 0;
+		lineCount = 0;
+		maxAllowedBlocks = 1;
 
 		this.playing = playing;
 	}
