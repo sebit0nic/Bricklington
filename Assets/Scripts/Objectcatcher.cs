@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Objectcatcher : MonoBehaviour {
 
+	public bool DestroyBall;
+
 	public Screen gameoverScreen;
 	public Animator scoreAnimator, crownAnimator;
 	public Blockspawner blockSpawner;
@@ -13,7 +15,7 @@ public class Objectcatcher : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag.Equals ("Ball")) {
+		if (coll.gameObject.tag.Equals ("Ball") && DestroyBall) {
 			Destroy (coll.gameObject);
 			gameoverScreen.gameObject.SetActive(true);
 			gameoverScreen.OnStart();
@@ -30,7 +32,7 @@ public class Objectcatcher : MonoBehaviour {
 				block.OnDissolve();
 			}
 		}
-		if (coll.gameObject.tag.Equals("BlockFormation")) {
+		if (coll.gameObject.tag.Equals("Block")) {
 			Destroy (coll.gameObject);
 		}
 	}
