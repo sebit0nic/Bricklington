@@ -6,7 +6,6 @@ public class StartButton : MonoBehaviour {
 
 	public Screen titlescreen;
 	public GameObject ball;
-	public GameObject explosion;
 	private Blockspawner blockspawner;
 	private Button thisButton;
 	private Score score;
