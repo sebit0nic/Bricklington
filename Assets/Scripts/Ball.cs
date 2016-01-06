@@ -5,6 +5,7 @@ public class Ball : MonoBehaviour {
 
 	public float initialForce = 600;
 	public GameObject explosion;
+	private ObjectPool objectPool;
 
 	private Rigidbody2D thisRigidbody;
 	private Vector3 originalPos;
@@ -20,6 +21,7 @@ public class Ball : MonoBehaviour {
 	private void Start() {
 		score = GameObject.Find ("Main Camera").GetComponent<Score> ();
 		animator = GetComponent<Animator> ();
+		objectPool = GameObject.Find ("Explosionpool").GetComponent<ObjectPool> ();
 	}
 
 	private void OnCollisionEnter2D(Collision2D coll) {
@@ -28,7 +30,13 @@ public class Ball : MonoBehaviour {
 		}
 
 		Vector3 explosionPosition = new Vector3 (transform.position.x, transform.position.y, 1);
-		Instantiate (explosion, explosionPosition, Quaternion.identity);
+		GameObject obj = objectPool.GetPooledObject ();
+		if (obj != null) {
+			obj.transform.position = explosionPosition;
+			obj.transform.rotation = Quaternion.identity;
+			obj.SetActive (true);
+		}
+
 		animator.SetTrigger ("OnBounce");
 	}
 

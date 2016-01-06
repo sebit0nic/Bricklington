@@ -22,7 +22,9 @@ public class Explosion : MonoBehaviour {
 		spriteRenderer.color = coloring;
 
 		if (coloring.a <= 0) {
-			Destroy(gameObject);
+			coloring = new Color(0.742f, 0.683f, 0.41f, 0.5f);
+			scaling = new Vector3 (0.2f, 0.2f, 1);
+			gameObject.SetActive(false);
 		}
 	}
 }

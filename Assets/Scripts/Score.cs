@@ -46,7 +46,7 @@ public class Score : MonoBehaviour {
 			PlayerPrefs.SetInt("Highscore", highscore);
 			PlayerPrefs.Save();
 		}
-		endHighscore.text = "Top: "+highscore.ToString ();
+		endHighscore.text = "Best: "+highscore.ToString ();
 	}
 
 	public void ResetForGame(bool onscore) {

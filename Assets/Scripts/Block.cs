@@ -34,7 +34,8 @@ public class Block : MonoBehaviour {
 			block.color = tempColor;
 			blockShadow.color = tempColor2;
 			if (tempColor.a <= 0 || tempColor2.a <= 0) {
-				Destroy (gameObject);
+				ResetBlock();
+				gameObject.SetActive(false);
 			}
 		}
 	}
@@ -44,6 +45,15 @@ public class Block : MonoBehaviour {
 			particleSys.Play();
 			OnDissolve();
 		}
+	}
+
+	private void ResetBlock() {
+		tempColor = new Color (0.472f, 0.25f, 0, 1);
+		tempColor2 = new Color (0.742f, 0.683f, 0.41f, 1);
+		block.color = tempColor;
+		blockShadow.color = tempColor2;
+		thisCollider.enabled = true;
+		transform.localScale = new Vector3(0.90675f, 0.9098459f, 1);
 	}
 
 	public void OnDissolve() {

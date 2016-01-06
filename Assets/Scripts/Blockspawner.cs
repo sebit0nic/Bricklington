@@ -4,6 +4,7 @@ using System.Collections;
 public class Blockspawner : MonoBehaviour {
 	
 	public GameObject block;
+	private ObjectPool objectPool;
 	private float interval = 5;
 	private float timer = 2;
 	private int lineCount;
@@ -12,6 +13,10 @@ public class Blockspawner : MonoBehaviour {
 	public Vector2[] spawnLocations;
 	private int maxAllowedBlocks = 1;
 	private int listIndexPointer = 0;
+
+	private void Start() {
+		objectPool = GetComponent<ObjectPool> ();
+	}
 
 	private void Update() {
 		if (playing) {
@@ -51,7 +56,12 @@ public class Blockspawner : MonoBehaviour {
 			}
 
 			if (canBePlaced) {
-				Instantiate(block, spawnLocations[randomLocation], Quaternion.identity);
+				GameObject obj = objectPool.GetPooledObject();
+				if (obj != null) {
+					obj.transform.position = spawnLocations[randomLocation];
+					obj.transform.rotation = Quaternion.identity;
+					obj.SetActive (true);
+				}
 				placedBlocks[listIndexPointer] = randomLocation;
 				listIndexPointer++;
 				amountOfBlocks--;
