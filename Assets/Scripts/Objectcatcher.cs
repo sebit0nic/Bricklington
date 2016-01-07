@@ -6,7 +6,7 @@ public class Objectcatcher : MonoBehaviour {
 	public bool DestroyBall;
 
 	public Screen gameoverScreen;
-	public Animator scoreAnimator, crownAnimator, pauseButton;
+	public Animator scoreAnimator, crownAnimator, pauseButton, paddle;
 	public Blockspawner blockSpawner;
 	private Score score;
 
@@ -25,6 +25,7 @@ public class Objectcatcher : MonoBehaviour {
 				crownAnimator.SetTrigger("OnDisappear");
 			}
 			pauseButton.SetTrigger("OnEnd");
+			paddle.SetTrigger("OnEnd");
 			score.SetScoreText();
 
 			GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");

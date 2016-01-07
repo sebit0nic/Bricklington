@@ -7,6 +7,7 @@ public class GameoverButton : MonoBehaviour {
 	public Screen gameoverScreen, titleScreen;
 	public Blockspawner blockspawner;
 	public GameObject ball;
+	public GameObject paddle;
 
 	private Score score;
 	private Button thisButton;
@@ -19,6 +20,8 @@ public class GameoverButton : MonoBehaviour {
 	public void OnRetry() {
 		gameoverScreen.OnDisappear ();
 		thisButton.enabled = false;
+		paddle.GetComponent<Animator>().SetTrigger ("OnStart");
+		paddle.transform.position = new Vector3 (0, -5.7f, 0);
 		
 		blockspawner.SetPlaying (true);
 		Instantiate (ball, Vector3.zero, Quaternion.identity);
@@ -29,6 +32,8 @@ public class GameoverButton : MonoBehaviour {
 		gameoverScreen.OnDisappear ();
 		thisButton.enabled = false;
 		titleScreen.OnStart ();
+		paddle.GetComponent<Animator>().SetTrigger ("OnStart");
+		paddle.transform.position = new Vector3 (0, -5.7f, 0);
 		score.ResetForHome ();
 	}
 
