@@ -8,14 +8,19 @@ public class Ball : MonoBehaviour {
 	private ObjectPool objectPool;
 
 	private Rigidbody2D thisRigidbody;
-	private Vector3 originalPos;
 	private Score score;
 	private Animator animator;
 
 	private void Awake() {
 		thisRigidbody = GetComponent<Rigidbody2D> ();
-		thisRigidbody.AddForce (new Vector3 (initialForce, initialForce, 0));
-		originalPos = transform.position;
+		int random = Random.Range (0, 2);
+		int offset = 0;
+		if (random == 0) {
+			offset = 1;
+		} else {
+			offset = -1;
+		}
+		thisRigidbody.AddForce (new Vector3 (initialForce * offset, initialForce, 0));
 	}
 
 	private void Start() {
@@ -38,11 +43,5 @@ public class Ball : MonoBehaviour {
 		}
 
 		animator.SetTrigger ("OnBounce");
-	}
-
-	public void ResetPosition() {
-		thisRigidbody.velocity = Vector2.zero;
-		transform.position = originalPos;
-		thisRigidbody.AddForce (new Vector3 (initialForce, initialForce, 0));
 	}
 }

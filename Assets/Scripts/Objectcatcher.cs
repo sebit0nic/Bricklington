@@ -8,6 +8,7 @@ public class Objectcatcher : MonoBehaviour {
 	public Screen gameoverScreen;
 	public Animator scoreAnimator, crownAnimator, pauseButton, paddle;
 	public Blockspawner blockSpawner;
+	public GameObject instructionArrow1, instructionArrow2;
 	private Score score;
 
 	private void Start() {
@@ -27,6 +28,10 @@ public class Objectcatcher : MonoBehaviour {
 			pauseButton.SetTrigger("OnEnd");
 			paddle.SetTrigger("OnEnd");
 			score.SetScoreText();
+			if (instructionArrow1 != null && instructionArrow2 != null) {
+				Destroy (instructionArrow1);
+				Destroy (instructionArrow2);
+			}
 
 			GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
 			for (int i = 0; i < blocks.Length; i++) {

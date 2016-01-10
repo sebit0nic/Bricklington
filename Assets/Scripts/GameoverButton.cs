@@ -32,8 +32,6 @@ public class GameoverButton : MonoBehaviour {
 		gameoverScreen.OnDisappear ();
 		thisButton.enabled = false;
 		titleScreen.OnStart ();
-		paddle.GetComponent<Animator>().SetTrigger ("OnStart");
-		paddle.transform.position = new Vector3 (0, -5.7f, 0);
 		score.ResetForHome ();
 	}
 

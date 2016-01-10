@@ -6,6 +6,8 @@ public class StartButton : MonoBehaviour {
 
 	public Screen titlescreen;
 	public GameObject ball;
+	public GameObject paddle;
+	public GameObject instructionArrow1, instructionArrow2;
 	private Blockspawner blockspawner;
 	private Button thisButton;
 	private Score score;
@@ -20,6 +22,15 @@ public class StartButton : MonoBehaviour {
 		titlescreen.OnDisappear ();
 		thisButton.enabled = false;
 		score.ResetForGame (false);
+
+		paddle.SetActive (true);
+		paddle.GetComponent<Animator>().SetTrigger ("OnStart");
+		paddle.transform.position = new Vector3 (0, -5.7f, 0);
+
+		if (instructionArrow1 != null && instructionArrow2 != null) {
+			instructionArrow1.SetActive(true);
+			instructionArrow2.SetActive(true);
+		}
 		
 		blockspawner.SetPlaying (true);
 		Instantiate (ball, new Vector3(0, 1, 0), Quaternion.identity);
