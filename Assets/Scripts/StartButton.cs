@@ -11,17 +11,20 @@ public class StartButton : MonoBehaviour {
 	private Blockspawner blockspawner;
 	private Button thisButton;
 	private Score score;
+	private AudioSource audioSource;
 
 	private void Start() {
 		blockspawner = GameObject.Find ("Blockspawner").GetComponent<Blockspawner>();
 		thisButton = GetComponent<Button> ();
 		score = GameObject.Find ("Main Camera").GetComponent<Score> ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	public void OnClick() {
 		titlescreen.OnDisappear ();
 		thisButton.enabled = false;
 		score.ResetForGame (false);
+		audioSource.Play ();
 
 		paddle.SetActive (true);
 		paddle.GetComponent<Animator>().SetTrigger ("OnStart");

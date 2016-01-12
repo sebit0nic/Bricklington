@@ -10,14 +10,17 @@ public class Objectcatcher : MonoBehaviour {
 	public Blockspawner blockSpawner;
 	public GameObject instructionArrow1, instructionArrow2;
 	private Score score;
+	private AudioSource audioSource;
 
 	private void Start() {
 		score = GameObject.Find ("Main Camera").GetComponent<Score> ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	private void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag.Equals ("Ball") && DestroyBall) {
 			Destroy (coll.gameObject);
+			audioSource.Play ();
 			gameoverScreen.gameObject.SetActive(true);
 			gameoverScreen.OnStart();
 			blockSpawner.SetPlaying(false);
@@ -28,8 +31,10 @@ public class Objectcatcher : MonoBehaviour {
 			pauseButton.SetTrigger("OnEnd");
 			paddle.SetTrigger("OnEnd");
 			score.SetScoreText();
-			if (instructionArrow1 != null && instructionArrow2 != null) {
+			if (instructionArrow1 != null) {
 				Destroy (instructionArrow1);
+			}
+			if (instructionArrow2 != null) {
 				Destroy (instructionArrow2);
 			}
 

@@ -11,10 +11,12 @@ public class GameoverButton : MonoBehaviour {
 
 	private Score score;
 	private Button thisButton;
+	private AudioSource audioSource;
 
 	private void Start() {
 		score = GameObject.Find ("Main Camera").GetComponent<Score> ();
 		thisButton = GetComponent<Button> ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	public void OnRetry() {
@@ -22,6 +24,7 @@ public class GameoverButton : MonoBehaviour {
 		thisButton.enabled = false;
 		paddle.GetComponent<Animator>().SetTrigger ("OnStart");
 		paddle.transform.position = new Vector3 (0, -5.7f, 0);
+		audioSource.Play ();
 		
 		blockspawner.SetPlaying (true);
 		Instantiate (ball, Vector3.zero, Quaternion.identity);
@@ -33,6 +36,7 @@ public class GameoverButton : MonoBehaviour {
 		thisButton.enabled = false;
 		titleScreen.OnStart ();
 		score.ResetForHome ();
+		audioSource.Play ();
 	}
 
 	public void OnDisableGameoverScreen() {

@@ -8,8 +8,12 @@ public class PaddleController : MonoBehaviour {
 	public GameObject instructionArrow1, instructionArrow2;
 	private bool isAndroid;
 	private Vector3 playerPos = new Vector3(0, -5.7f, 0);
+	private AudioSource audioSource;
+	private Audiocontroller audioController;
 
 	private void Start() {
+		audioSource = GetComponent<AudioSource> ();
+		audioController = GameObject.Find ("Audiocontroller").GetComponent<Audiocontroller> ();
 		if (Application.platform == RuntimePlatform.Android) {
 			isAndroid = true;
 		}
@@ -45,5 +49,12 @@ public class PaddleController : MonoBehaviour {
 		}
 		playerPos = new Vector3 (Mathf.Clamp (xPos, -2.7f, 2.7f), -5.7f, 0);
 		transform.position = playerPos;
+	}
+
+	private void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag.Equals ("Ball")) {
+			audioSource.Play ();
+			audioController.SetPitch(1);
+		}
 	}
 }

@@ -12,6 +12,8 @@ public class Block : MonoBehaviour {
 	private SpriteRenderer block;
 	private Vector3 blockPos;
 	private Color tempColor, tempColor2;
+	private AudioSource audioSource;
+	private Audiocontroller audioController;
 
 	private void Start() {
 		animator = GetComponent<Animator> ();
@@ -20,6 +22,8 @@ public class Block : MonoBehaviour {
 		thisCollider = GetComponent<BoxCollider2D> ();
 		tempColor = new Color (0.472f, 0.25f, 0, 1);
 		tempColor2 = new Color (0.742f, 0.683f, 0.41f, 1);
+		audioSource = GetComponent<AudioSource> ();
+		audioController = GameObject.Find ("Audiocontroller").GetComponent<Audiocontroller> ();
 	}
 
 	private void Update() {
@@ -28,6 +32,7 @@ public class Block : MonoBehaviour {
 		transform.position = blockPos;
 
 		if (transform.position.y <= -4) {
+			thisCollider.enabled = false;
 			tempColor.a -= 2 * Time.deltaTime;
 			tempColor2.a -= 2 * Time.deltaTime;
 
@@ -42,6 +47,9 @@ public class Block : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag.Equals ("Ball")) {
+			audioSource.pitch = audioController.GetPitch();
+			audioSource.Play ();
+			audioController.IncreasePitch(0.05f);
 			particleSys.Play();
 			OnDissolve();
 		}
