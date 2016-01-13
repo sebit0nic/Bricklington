@@ -13,7 +13,7 @@ public class PauseButton : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetMouseButtonDown (0)) {
-			Time.timeScale = 1;
+			Time.timeScale = 1.2f;
 			thisButton.interactable = true;
 			for (int i = 0; i < disableImages.Length; i++) {
 				disableImages[i].enabled = false;
